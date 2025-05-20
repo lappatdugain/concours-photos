@@ -5,4 +5,4 @@ Le concours consiste en plusieurs phases : Dépôt des photos Vote en 2 étapes 
 On devra pouvoir définir les dates de chaque étape : date de début et date de fin. </p>
 
 ## DB : 
-(diagramedb.png "Diagrame de la DB")
+![diagramedb.png](Diagrame de la DB)
