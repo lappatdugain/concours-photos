@@ -9,9 +9,9 @@
 
 <body>
 <header>
-	<img src="images/" alt="iut" id="iut" />
+	<img src="images/logo-iut.png" alt="iut" id="iut" />
 	<h1>CONCOURS PHOTO DE L’IUT DE CHÂTELLERAULT 2025</h1>
-	<img src="images/" alt="univ" id="univ" />
+	<img src="images/logo-univ-poitiers.png" alt="univ" id="univ" />
 	<h2></h2>
 	<nav>
 	<ul>
