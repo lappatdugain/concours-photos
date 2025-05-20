@@ -8,7 +8,7 @@ actor ADMINISTRATEUR
 
 rectangle "Système Concours Photo" {
     
-    USER --> (S'inscrire via ENT)
+    
     USER --> (S'identifier)
     USER --> (Déposer une photo)
     USER --> (Voir les photos)
@@ -22,17 +22,17 @@ rectangle "Système Concours Photo" {
     (Voir les photos) --> (S'identifier) : <<include>>
     (Consulter les résultats) --> (S'identifier) : <<include>>
 
-    ADMINISTRATEUR --> (Gérer les photos)
+    ADMINISTRATEUR --> (Supprimer les photos)
     ADMINISTRATEUR --> (Gérer les dates du concours)
     ADMINISTRATEUR --> (Définir le thème du concours)
-    ADMINISTRATEUR --> (Modifier la page d'accueil)
+    ADMINISTRATEUR --> (Modifier le texte de la page d'accueil)
     ADMINISTRATEUR --> (Bloquer un participant)
     ADMINISTRATEUR --> (Consulter les résultats)
     
-    (Gérer les photos) --> (S'identifier) : <<include>>
+    (Supprimer les photos) --> (S'identifier) : <<include>>
     (Gérer les dates du concours) --> (S'identifier) : <<include>>
     (Définir le thème du concours) --> (S'identifier) : <<include>>
-    (Modifier la page d'accueil) --> (S'identifier) : <<include>>
+    (Modifier le texte de la page d'accueil) --> (S'identifier) : <<include>>
     (Bloquer un participant) --> (S'identifier) : <<include>>
 }
 @enduml
