@@ -1,0 +1,37 @@
+@startuml
+class Users {
+  +Id : INT
+  +Nom : VARCHAR(50)
+  +Prenom : VARCHAR(100)
+  +UploadedPhoto : BOOL
+  +IsAdmin : BOOL
+  +NbVotes : INT
+}
+
+class Photo {
+  +Id : INT
+  +NomPhoto : INT
+  +Description : TEXT
+}
+
+class Vote {
+  +Id : INT
+  +idPhoto : INT
+  +idUser : INT
+}
+
+class Concours {
+  +Id : INT
+  +Theme : Char(50)
+  +Regles : TEXT
+  +DateDebutDepot : DATE
+  +DateFinDepot : DATE
+  +DateDebutVote : DATE
+  +DateFinVote : DATE
+}
+
+' Relations (basées sur les flèches détectées dans le fichier)
+Users "1" --> "0..1" Photo : dépose
+Photo "1" --> "*" Vote : reçoit
+Users "1" --> "0..3" Vote : vote
+@enduml
