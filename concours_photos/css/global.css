@@ -16,18 +16,18 @@ body {
 header {
 	text-align:center;
 	font-size:160%;
-	/*background-color: #d5ffff;*/
 	background-color: #000;
-	color:#4B7B87;
-	box-shadow: inset 0 0 20px #d5ffff;
-	border-top-left-radius:30px;
-	border-top-right-radius:30px;
 }
 
-header img {
+header #iut {
+	float:right;
+	margin: 20px;
+}
+header #univ {
 	float:left;
 	margin: 20px;
 }
+
 
 
 /*Menu styles
@@ -97,4 +97,5 @@ footer img {
 	vertical-align:middle;
 	margin-left: 10px;
 }
+
 
