@@ -12,14 +12,8 @@
 	<img src="images/logo-iut.png" alt="iut" id="iut" />
 	<h1>CONCOURS PHOTO DE L’IUT DE CHÂTELLERAULT 2025</h1>
 	<img src="images/logo-univ-poitiers.png" alt="univ" id="univ" />
-	<h2></h2>
-	<nav>
-	<ul>
-		<li><a href="index.php?route=families">Familles</a></li>
-		<li><a href="index.php?route=add_equipment">Ajout équipement</a></li>
-		<li><a href="index.php?route=contact">Contact</a></li>
-	</ul>
-</nav>
+	<h2>Identification LDAP</h2>
+	
 </header>
 
 <article>
