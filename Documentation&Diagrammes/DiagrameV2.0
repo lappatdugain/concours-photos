@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+skinparam backgroundColor #fdf6e3
+skinparam actorStyle awesome
+
+actor USER
+actor ADMINISTRATEUR
+
+rectangle "Système Concours Photo" {
+    
+    USER --> (S'inscrire via ENT)
+    USER --> (S'identifier)
+    USER --> (Déposer une photo)
+    USER --> (Voir les photos)
+    USER --> (Voter pour une photo)
+    USER --> (Contacter le support)
+    USER --> (Consulter les résultats)
+    
+    (Déposer une photo) --> (S'identifier) : <<include>>
+    (Voter pour une photo) --> (S'identifier) : <<include>>
+    (Contacter le support) --> (S'identifier) : <<include>>
+    (Voir les photos) --> (S'identifier) : <<include>>
+    (Consulter les résultats) --> (S'identifier) : <<include>>
+
+    ADMINISTRATEUR --> (Gérer les photos)
+    ADMINISTRATEUR --> (Gérer les dates du concours)
+    ADMINISTRATEUR --> (Définir le thème du concours)
+    ADMINISTRATEUR --> (Modifier la page d'accueil)
+    ADMINISTRATEUR --> (Bloquer un participant)
+    ADMINISTRATEUR --> (Consulter les résultats)
+    
+    (Gérer les photos) --> (S'identifier) : <<include>>
+    (Gérer les dates du concours) --> (S'identifier) : <<include>>
+    (Définir le thème du concours) --> (S'identifier) : <<include>>
+    (Modifier la page d'accueil) --> (S'identifier) : <<include>>
+    (Bloquer un participant) --> (S'identifier) : <<include>>
+}
+@enduml
