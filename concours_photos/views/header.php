@@ -2,16 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>CONCOURS PHOTO DE L’IUT DE CHÂTELLERAULT 2025</title>
+    <title>Concours Photo 2025</title>
     <link rel="stylesheet" type="text/css" href="css/global.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 <header>
-	<img src="images/idea.png" alt="Retour vers la page d'accueil" />
-	<h1></h1>
-	<h2>Base de données de résolution de pannes</h2>
+	<img src="images/" alt="iut" id="iut" />
+	<h1>CONCOURS PHOTO DE L’IUT DE CHÂTELLERAULT 2025</h1>
+	<img src="images/" alt="univ" id="univ" />
+	<h2></h2>
 	<nav>
 	<ul>
 		<li><a href="index.php?route=families">Familles</a></li>
