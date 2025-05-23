@@ -17,6 +17,13 @@
     <img src="logo-iut.png" alt="IUT Poitiers Niort Châtellerault">
   </div>
 </header>
-
-
+<nav>
+    <ul class="menu">
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#">À propos</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+    
 <article>
