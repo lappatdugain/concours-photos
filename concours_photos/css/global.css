@@ -11,12 +11,14 @@
 body {
   background:url('bu.jpg');
   font-family: Arial, sans-serif;
+  margin: 0;
+    font-family: sans-serif;
 }
-
 
 
 /*Header styles
 -------------------------------------------------*/
+
 .header {
   width: 100%;
   display: flex;
@@ -38,36 +40,40 @@ body {
 
 
 
+
 /*Menu styles
 -----------------------------------------------------*/
 nav {
-	text-align: left;
-}
+      background-color:rgba(0, 0, 0, 0.7);
+	  backdrop-filter: blur(4px);
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      overflow: hidden; 
+    }
 
-nav li {
-	display:inline;
-}
+ul.menu {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-nav #select {
-	background:#fff;
-	color:#444;
-}
+ul.menu li {
+      flex: 1;
+      text-align: center;
+    }
 
-nav a {
-	text-decoration:none;
-	color:#fff;
-	background:#444;
-	padding-left:20px;
-	padding-right:20px;
-	padding-top:5px;
-	padding-bottom:5px;
-	border-radius:10px;
-	margin-left:10px;
-}
+ul.menu li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+    }
 
-nav a:hover {
-	background:#999;
-}
+ul.menu li a:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
 
 
 /*Content styles
@@ -84,6 +90,14 @@ article  section {
 	padding: 5px;
 	margin-bottom: 10px;
 	border-radius: 10px;
+}
+
+h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
 }
 
 
@@ -107,8 +121,6 @@ footer img {
 }
 
 
-
-
 @media screen and (max-width: 900px) {
   .header {
     flex-direction: column;
@@ -129,7 +141,18 @@ footer img {
     font-size: 1.2em;
     margin: 10px 0;
   }
-	
+
+
+
+  ul.menu {
+        flex-direction: column;
+      }
+
+  ul.menu li {
+        flex: unset;
+      }
+
+
 }
 
 
