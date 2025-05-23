@@ -2,30 +2,38 @@
 
 /*Global page styles
 -------------------------------------------------*/
-body {
-	background:url('../images/background.png');
-	font-family:sans-serif;
-	margin-left:auto;
-	margin-right:auto;
-	width:80%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body {
+  background:url('bu.jpg');
+  font-family: Arial, sans-serif;
+}
+
 
 
 /*Header styles
 -------------------------------------------------*/
-header {
-	text-align:center;
-	font-size:160%;
-	background-color: #000;
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.7); 
+  backdrop-filter: blur(4px); 
 }
 
-header #iut {
-	float:right;
-	margin: 20px;
+.logo img {
+  height: 100px; 
+  object-fit: contain;
 }
-header #univ {
-	float:left;
-	margin: 20px;
+.logo-iut img {
+  height: 100px; 
+  object-fit:contain;
 }
 
 
@@ -96,6 +104,32 @@ footer img {
 	height:50px;
 	vertical-align:middle;
 	margin-left: 10px;
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  .logo img {
+    height: 50px;
+    margin: 10px 0;
+  }
+   .logo-iut img {
+    height: 50px;
+    margin: 10px 0;
+  }
+
+  .header-title {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+	
 }
 
 
