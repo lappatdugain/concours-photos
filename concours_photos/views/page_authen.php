@@ -1,4 +1,6 @@
-<article id="authen">
+<?php require('header_authen.php') ?>
+
+  <article id="authen">
   <form action="fichier_php" method="post">
   <div id="login">
     <label for="login">Login : </label>
@@ -12,3 +14,5 @@
     <input type="submit" value="Valider" id="bouton"/>
   </div>
   </form>
+
+<?php require('footer.php') ?>
