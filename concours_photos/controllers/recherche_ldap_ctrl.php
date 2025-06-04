@@ -9,6 +9,6 @@ function recherche_ldap_ctrl() {
     recherche_ldap($login, $pass);
     
 
-    require('views/accueil.php');
+    require('views/welcome_view.php');
     
 }

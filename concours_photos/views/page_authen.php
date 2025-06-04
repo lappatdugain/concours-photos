@@ -1,7 +1,7 @@
 <?php require('header_authen.php') ?>
 
   <article id="authen">
-  <form action="fichier_php" method="post">
+  <form action="../controllers/recherche_ldap_ctrl.php" method="post">
   <div id="login">
     <label for="login">Login : </label>
     <input type="email" name="login" id="login" required />
