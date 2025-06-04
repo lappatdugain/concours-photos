@@ -45,7 +45,7 @@ body {
 -----------------------------------------------------*/
 nav {
       background-color:rgba(0, 0, 0, 0.7);
-	  backdrop-filter: blur(4px);
+	    backdrop-filter: blur(4px);
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
       overflow: hidden; 
@@ -92,6 +92,16 @@ article  section {
 	border-radius: 10px;
 }
 
+#authen {
+  background-color:rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(4px);
+	margin-top: 200px;
+  margin-left: 500px;
+  margin-right: 500px;
+	border-radius: 10px;
+  text-align:center;
+}
+
 h1 {
   flex: 1;
   text-align: center;
@@ -100,6 +110,24 @@ h1 {
   color: rgb(255, 255, 255);
 }
 
+label {
+  color : white;
+}
+
+#mdp, #login ,#valider{
+  margin-top:15px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+#bouton{
+  border-radius: 4px;
+  padding:10px;
+  background-color: #248338;
+  color:white;
+  font-family:Arial, Helvetica, sans-serif;
+  border: 2px solid #28cf6e;
+}
 
 /*Footer styles
 -------------------------------------------------------*/
@@ -142,7 +170,11 @@ footer img {
     margin: 10px 0;
   }
 
-
+  #authen {
+    margin-top:50px !important;
+    margin: 250px auto 0 auto;
+    max-width: 400px;
+  }
 
   ul.menu {
         flex-direction: column;
