@@ -1,0 +1,44 @@
+@startuml
+
+' Définir les entités
+entity User {
+    id : int <<ID>>
+    nom : varchar(30)
+    prenom : varchar(50)
+    admin : boolean
+}
+
+entity photo {
+    id : int <<ID>>
+    id_utilisateur : int <<ID>>
+    nom_photo : varchar(100)
+    description : varchar(300)
+    date_depot : DATE
+}
+
+entity Vote {
+    id : int <<ID>>
+    id_photo : int <<ID>>
+    id_utilisateur : int <<ID>>
+    tour : int
+    date_vote : DATE
+}
+
+entity concours {
+    id : int <<ID>>
+    regles : text
+    date_debut_depot : date
+    date_fin_depot : date
+    date_debut_vote1 : date
+    date_fin_vote1 : date
+    date_debut_vote2 : date
+    date_fin_vote2 : date
+    theme : varchar(30)
+}
+
+' Relations
+User "1" -- "0..1" photo : déposer
+User "1" -- "0..4" Vote : voter
+Vote "*" -- "1" photo : pour
+
+@enduml
