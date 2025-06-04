@@ -5,8 +5,8 @@
     <input type="email" name="login" id="login" required />
   </div>
   <div id="mdp">
-    <label for="mdp">Mot de Passe : </label>
-    <input type="text" name="mdp" id="mdp" required />
+    <label for="pass">Mot de Passe : </label>
+    <input type="text" name="pass" id="mdp" required />
   </div>
   <div id="valider">
     <input type="submit" value="Valider" id="bouton"/>
