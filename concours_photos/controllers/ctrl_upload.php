@@ -26,9 +26,7 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === 0) {
         if (move_uploaded_file($tmp_name, $destination)) {
             echo "Photo envoyée avec succès !";
 
-            // Optionnel : enregistrer le nom dans la base de données
-            // $query = $pdo->prepare("UPDATE utilisateurs SET photo = ? WHERE id = ?");
-            // $query->execute([$new_name, $user_id]);
+            
 
         } else {
             echo "Erreur lors de l'envoi.";
