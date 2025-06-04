@@ -19,9 +19,10 @@ CREATE TABLE concours (
 
 CREATE TABLE photo (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    nom_photo VARCHAR(100) NOT NULL,
     id_utilisateur INT NOT NULL,
+    nom_photo VARCHAR(30) NOT NULL,
     description VARCHAR(300),
+    date_depot DATE NOT NULL
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id)
 );
 
@@ -30,6 +31,7 @@ CREATE TABLE vote (
     id_photo INT NOT NULL,
     id_utilisateur INT NOT NULL,
     tour INT NOT NULL,
+    date_vote DATE NOT NULL,
     FOREIGN KEY (id_photo) REFERENCES photo(id),
     FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id)
 );
