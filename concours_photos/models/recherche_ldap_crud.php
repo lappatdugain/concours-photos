@@ -4,14 +4,10 @@
 // V. Verdon 20240607
 // Vérifie si le compte existe dans le LDAP de l'Université
 //Attention, on a besoin d'installer le paquet php-ldap pour que cela fonctionne !
-function recherche_ldap() {
+function recherche_ldap($login,$pass) {
 // Configuration pour l'interface PHP du LDAP
 define('SERVER', 'ldaps://ldapsupannappli.univ-poitiers.fr:636');
 define('ROOT', 'ou=people,dc=univ-poitiers,dc=fr');
-
-// recuperation données formulaire. Attention il faut ajouter des contrôles !
-$login=$_POST['login'];
-$pass=$_POST['pass'];
 
 // Initialisation de la connexion LDAP
 $connex=ldap_connect(SERVER);
