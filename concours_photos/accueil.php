@@ -36,9 +36,9 @@
             solutions_list_ctrl();
             break;
             
-        case 'add_equipment':
-            require('controllers/equipment_ctrl.php');
-            add_equipment_ctrl();
+        case 'vote':
+            require('views/vote_view.php');
+#            add_equipment_ctrl();
             break;
                        
         default:
