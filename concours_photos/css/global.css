@@ -9,10 +9,13 @@
 }
 
 body {
-  background:url('../images/bu.jpg');
   font-family: Arial, sans-serif;
   margin: 0;
     font-family: sans-serif;
+}
+
+article{
+  background:url('../images/bu.jpg')
 }
 
 
