@@ -3,7 +3,7 @@ function recherche_ldap_ctrl() {
     $login = $_POST['login'];
     $pass = $_POST['pass'];
   
-    require('../models/recherche_ldap.crud.php');
+    require('./models/recherche_ldap.crud.php');
     recherche_ldap($login, $pass);
     
 
