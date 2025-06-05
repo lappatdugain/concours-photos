@@ -50,6 +50,7 @@ foreach ($photos as $photo) {
     
     <div class="grid-box">
         <?php
+        $photoPaths = scandir("./nomDossier");
         foreach ($photoPaths as $photo) {
             echo '<div class="grid-images" data-modal="modal-"' . $photo['id_user'] . '" onclick="openImg(event)">';
             echo '<img src="' . $photo['path'] . '">';
