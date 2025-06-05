@@ -9,7 +9,7 @@
 }
 
 body {
-  background:url('concours_photos/images/bu.jpg');
+  background:url('./concours-photo/concours_photos/images/bu.jpg');
   font-family: Arial, sans-serif;
   margin: 0;
     font-family: sans-serif;
