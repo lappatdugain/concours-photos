@@ -48,28 +48,30 @@ foreach ($photos as $photo) {
         <p class="la-photo-cest">“La photographie, c'est mieux qu'un dessin, mais il ne faut pas le dire.”</p>
     </header>
     
-    <div class="content">
+    <div class="grid-box">
         <?php
         foreach ($photoPaths as $photo) {
-            echo '<div class="img-container">';
-            echo '<img class="img-child" alt="Photo" src="'.$photo['path'].'">';
-            echo '<p class="la-photo">' . htmlspecialchars($photo['title']) . '</p>';
-            //echo '<button class="btn2" onclick="vote('.$photo['id_pro'].', \''.htmlspecialchars($photo['title']).'\')">💗</button>';
-            echo '<button class="btn2" data-id="' . $photo['id'] . '" onclick="likePhoto(' . $photo['id_pro'] . ', \'' . htmlspecialchars($photo['title']) . '\')">💗</button>';
-
-            require("modeles/SQLjs/vote_crud.php") ; 
-            likePhoto($photo['id_pro'], $photo['title']);
+            echo '<div class="grid-images" data-modal="modal-"' . $photo['id_user'] . '" onclick="openImg(event)">';
+            echo '<img src="' . $photo['path'] . '">';
+            echo '<div class="txt-images">';
+            echo '<p>' .$photo['nom_photo']. '</p>';
+            echo '<input type="button" value="voter" onclick="openImg(event)">';
             echo '</div>';
-            echo '<br>';
+            echo '</div>';
         }
         ?>
-        <button onclick="previousPage()">Précédent</button>
-        <button onclick="nextPage()">Suivant</button>
     </div>
-    <button onclick="confirmVote($user_id)">Confirmer le vote</button>
-    <?php require("js/vote_photo.js") ; 
-    confirmVote($user_id);
 
+    <?php
+    foreach ($photoPaths as $photo) {
+        echo '<div class="modal modal"' . $photo['id_user'] . '">';
+        echo '<div class="modal-box">';
+        echo '<span class="close" onclick="closeImg(this)">&times;</span>';
+        echo '<img src="' . $photo['path'] . '">';
+        echo '<p>' .$photo['nom_photo']. '</p>';
+        echo '<p class="txt-images">' .$photo['description']. '</p>';     
+        echo '</div></div>';
+    }
     ?>
     
     
