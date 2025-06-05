@@ -10,11 +10,11 @@
 <body>
 <header class="header">
   <div class="logo">
-    <img src="logo-univ-poitiers.png" alt="Université de Poitiers">
+    <img src="../images/logo-univ-poitiers.png" alt="Université de Poitiers">
   </div>
   <h1>CONCOURS PHOTO DE L’IUT DE CHÂTELLERAULT 2025</h1>
   <div class="logo-iut">
-    <img src="logo-iut.png" alt="IUT Poitiers Niort Châtellerault">
+    <img src="../images/logo-iut.png" alt="IUT Poitiers Niort Châtellerault">
   </div>
 </header>
 
