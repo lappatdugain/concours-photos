@@ -10,6 +10,8 @@ function connection() {
     
     //Db connection
     $connex = new PDO('mysql:host=' . HOST . ';dbname=' . DB,USER , PASSWORD);
+    $connex->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     return $connex;
 }
 

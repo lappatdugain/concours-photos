@@ -42,10 +42,15 @@ if (
 
         if (move_uploaded_file($tmp_name, $destination)) {
             // Insertion en BDD
-            $sql = "INSERT INTO photos (id_utilisateur, titre, description, fichier) VALUES (?, ?, ?, ?)";
-            $stmt = $con->prepare($sql); // Utilise $con ici
-            $stmt->execute([$user_id, $titre, $description, $file_name]);
-
+            try {
+                $sql = "INSERT INTO photos (id_utilisateur, titre, description, fichier) VALUES (?, ?, ?, ?)";
+                $stmt = $con->prepare($sql);
+                $stmt->execute([$user_id, $titre, $description, $file_name]);
+                echo "Photo envoyée et enregistrée avec succès !";
+            } catch (PDOException $e) {
+                echo "Erreur lors de l'insertion en BDD : " . $e->getMessage();
+            }
+            
 
 
             echo "Photo envoyée et enregistrée avec succès !";
