@@ -17,9 +17,9 @@
             require('views/page_authen.php');
             break;
             
-        case 'families':
-            require('controllers/family_ctrl.php');
-            families_list_ctrl();
+        case 'authentif':
+            require('controllers/recherche_ldap_ctrl.php');
+            recherche_ldap_ctrl();
             break;
             
         case 'family':
