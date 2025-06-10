@@ -40,6 +40,15 @@
             require('views/vote_view.php');
 #            add_equipment_ctrl();
             break;
+
+        case 'upload':
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                require('controllers/ctrl_upload.php');
+                upload_photo();
+            } else {
+                require('views/view_upload.php');
+            }
+            break;
                        
         default:
             require('views/404_view.php');
