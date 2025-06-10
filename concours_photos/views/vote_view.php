@@ -45,7 +45,6 @@ foreach ($photos as $photo) {
 <body>
     <header class="header">
         <h1 class="voter-admin">Voter - Concours photo</h1>
-        <p class="la-photo-cest">“La photographie, c'est mieux qu'un dessin, mais il ne faut pas le dire.”</p>
     </header>
     
     <div class="grid-box">
