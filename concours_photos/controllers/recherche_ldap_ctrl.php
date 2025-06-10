@@ -6,7 +6,12 @@ function recherche_ldap_ctrl() {
     require('./models/recherche_ldap_crud.php');
     recherche_ldap($login, $pass);
     
+    // We write in database
+    require('models/connection.php');
+    $c = connection();
 
+    bdd_compte($c, $login, $pass);
+    
     require('views/welcome_view.php');
     
 }
