@@ -12,6 +12,6 @@ function recherche_ldap_ctrl() {
 
     bdd_compte($c, $login, $pass);
     
-    require('views/welcome_view.php');
+    require('views/accueil.php');
     
 }
