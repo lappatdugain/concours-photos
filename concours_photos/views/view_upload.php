@@ -1,4 +1,4 @@
-<?php require('header.php') ?>
+<?php require('header.php'); ?>
 
 <div class="container mt-4">
     <h2>Déposer une photo</h2>
@@ -52,4 +52,4 @@
     </footer>
 </div>
 
-<?php require('footer.php') ?>
+<?php require('footer.php'); ?>
