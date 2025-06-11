@@ -1,4 +1,4 @@
-<?php require 'header.php'; ?>
+<?php require('header.php'); ?>
 
 <link rel="stylesheet" href="../css/global.css">
 
@@ -12,4 +12,4 @@
     ?>
 </div>
 
-<?php require 'footer.php'; ?>
+<?php require('footer.php'); ?>
