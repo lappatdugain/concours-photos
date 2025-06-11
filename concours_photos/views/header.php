@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Concours Photo 2025</title>
     <link rel="stylesheet" type="text/css" href="./css/global.css" />
+    <link rel="stylesheet" type="text/css" href="./css/global.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
