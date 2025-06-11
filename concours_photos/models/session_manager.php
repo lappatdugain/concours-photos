@@ -26,6 +26,12 @@ function login_user($login, $password) {
         $prep->closeCursor();
 
         if ($user) {
+            // S'assurer que la session est démarrée
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            
+            $_SESSION['initialized'] = true;
             $_SESSION['is_logged_in'] = true;
             $_SESSION['user_data'] = [
                 'id' => $user['id'],
@@ -50,7 +56,13 @@ function is_logged_in() {
 }
 
 function get_current_user() {
-    return $_SESSION['user_data'] ?? null;
+    if (!isset($_SESSION)) {
+        return null;
+    }
+    if (!isset($_SESSION['user_data'])) {
+        return null;
+    }
+    return $_SESSION['user_data'];
 }
 
 function require_login() {
