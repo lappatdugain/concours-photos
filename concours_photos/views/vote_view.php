@@ -1,36 +1,35 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 ini_set('display_errors', 1);
-#require("modeles/vote_crud.php");
+
+require("modeles/vote_crud.php");
 #require("modeles/SQL/connection.php");
 #require("modeles/SQL/recupID.php");
 #require('modeles/SQL/close.php');
 
 $con = connection();
-
 $user_id = find_id_user($con);
 
-// Appel de la fonction pour récupérer les IDs et les titres
-$photos = get_photos($con);
 
-// Dossier où les images sont stockées
+$photos = get_photo_info($con);
 $storage_dir = 'stockage/';
 
 // Génération des chemins d'accès aux images et vérification de l'existence des fichiers
 $photoPaths = [];
 foreach ($photos as $photo) {
-    $file_path = $storage_dir . $photo['id_proprietaire'] . '.jpeg';
+    $file_path = $storage_dir . $photo['id_user'] . '.jpeg';
     if (file_exists($file_path)) {
         $photoPaths[] = [
             'path' => $file_path,
-            'id_pro' => $photo['id_proprietaire'],
-            'title' => $photo['titre']
+            'id_user' => $photo['id_user'],
+            'nom_photo' => $photo['nom_photo'],
+            'description' => $photo['description']
         ];
     } else {
-        // Debugging: log file path if not found
-        error_log("File not found: " . $file_path);
+        error_log("Fichier introuvable : " . $file_path);
     }
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -55,7 +54,9 @@ foreach ($photos as $photo) {
             echo '<img src="' . $photo['path'] . '">';
             echo '<div class="txt-images">';
             echo '<p>' .$photo['nom_photo']. '</p>';
-            echo '<input type="button" value="voter" onclick="openImg(event)">';
+            echo '<form action="controllers/vote_ctrl.php">';
+            echo '<input type="button" value="voter" onclick="vote(event)">';
+            echo '</form>';
             echo '</div>';
             echo '</div>';
         }
