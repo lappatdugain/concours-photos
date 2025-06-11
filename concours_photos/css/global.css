@@ -181,6 +181,10 @@ footer img {
     font-size: 1.2em;
     margin: 10px 0;
   }
+  .center-box {
+	margin: 1rem;
+        padding: 1rem;
+    }
 
   #authen {
     margin-top:50px !important;
