@@ -2,7 +2,7 @@
 </article>
 
 <footer>
-	<span>Conception R&T Company Châtellerault - 2023</span>
+	<span>Conception Département R&T Châtellerault - 2025</span>
 </footer>
 
 </body>
