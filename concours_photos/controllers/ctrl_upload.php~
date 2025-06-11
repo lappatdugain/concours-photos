@@ -2,16 +2,15 @@
 error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 ini_set('display_errors', 1);
 #require("modeles/vote_crud.php");
-require_once("modeles/SQL/connection.php");
-#require("modeles/SQL/recupID.php");
-#require('modeles/SQL/close.php');
+require_once("models/connection.php");
+
 
 
 $con = connection(); // Récupère l'objet PDO depuis connection()
 
-$sql = "INSERT INTO photos (id_utilisateur, titre, description, fichier) VALUES (?, ?, ?, ?)";
-$stmt = $con->prepare($sql); // Utilise $con ici
-$stmt->execute([$user_id, $titre, $description, $file_name]);
+$sql = "INSERT INTO photo (id_user, nom_photo, description, date_depot) VALUES (?, ?, ?, NOW())";
+$stmt = $con->prepare($sql);
+$stmt->execute([$user_id, $titre, $description]);
 
 
 // Vérifie que tous les champs sont là
@@ -43,9 +42,9 @@ if (
         if (move_uploaded_file($tmp_name, $destination)) {
             // Insertion en BDD
             try {
-                $sql = "INSERT INTO photos (id_utilisateur, titre, description, fichier) VALUES (?, ?, ?, ?)";
+                $sql = "INSERT INTO photo (id_user, nom_photo, description, date_depot) VALUES (?, ?, ?, NOW())";
                 $stmt = $con->prepare($sql);
-                $stmt->execute([$user_id, $titre, $description, $file_name]);
+                $stmt->execute([$user_id, $titre, $description]);
                 echo "Photo envoyée et enregistrée avec succès !";
             } catch (PDOException $e) {
                 echo "Erreur lors de l'insertion en BDD : " . $e->getMessage();
@@ -115,20 +114,21 @@ function upload_photo() {
     if (move_uploaded_file($file['tmp_name'], $destination)) {
         try {
             $con = connection();
+            
             // Insertion en base de données
             $sql = "INSERT INTO photo (id_user, nom_photo, description, date_depot) 
-                    VALUES (?, ?, ?, CURDATE())";
+                    VALUES (?, ?, ?, NOW())";
             $stmt = $con->prepare($sql);
             $stmt->execute([$_SESSION['id_user'], $titre, $description]);
             
-            header("Location: index.php?success=Photo déposée avec succès");
+            header("Location: accueil.php?success=Photo déposée avec succès");
             exit;
         } catch (PDOException $e) {
             // En cas d'erreur, supprimer le fichier uploadé
             if (file_exists($destination)) {
                 unlink($destination);
             }
-            header("Location: index.php?error=Erreur lors de l'enregistrement");
+            header("Location: accueil.php?error=Erreur lors de l'enregistrement");
             exit;
         }
     } else {
@@ -137,4 +137,3 @@ function upload_photo() {
     }
 }
 ?>
-

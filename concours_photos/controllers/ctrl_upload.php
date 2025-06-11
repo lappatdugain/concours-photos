@@ -3,6 +3,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
 ini_set('display_errors', 1);
 #require("modeles/vote_crud.php");
 require_once("models/connection.php");
+require_once("models/upload_crud.php");
 
 
 
@@ -29,6 +30,11 @@ if (
         die("Titre ou description trop longue.");
     }
 
+    // Vérifie si l'utilisateur a déjà uploadé une photo
+    if (has_user_uploaded($con, $user_id)) {
+        die("Vous avez déjà uploadé une photo.");
+    }
+
     // Récupération fichier
     $tmp_name = $_FILES['photo']['tmp_name'];
     $original_name = $_FILES['photo']['name'];
@@ -41,18 +47,11 @@ if (
 
         if (move_uploaded_file($tmp_name, $destination)) {
             // Insertion en BDD
-            try {
-                $sql = "INSERT INTO photo (id_user, nom_photo, description, date_depot) VALUES (?, ?, ?, NOW())";
-                $stmt = $con->prepare($sql);
-                $stmt->execute([$user_id, $titre, $description]);
+            if (upload_photo($con, $user_id, $titre, $description)) {
                 echo "Photo envoyée et enregistrée avec succès !";
-            } catch (PDOException $e) {
-                echo "Erreur lors de l'insertion en BDD : " . $e->getMessage();
+            } else {
+                echo "Erreur lors de l'insertion en BDD.";
             }
-            
-
-
-            echo "Photo envoyée et enregistrée avec succès !";
         } else {
             echo "Erreur lors de l'enregistrement du fichier.";
         }
@@ -112,18 +111,13 @@ function upload_photo() {
 
     // Déplacement du fichier
     if (move_uploaded_file($file['tmp_name'], $destination)) {
-        try {
-            $con = connection();
-            
-            // Insertion en base de données
-            $sql = "INSERT INTO photo (id_user, nom_photo, description, date_depot) 
-                    VALUES (?, ?, ?, NOW())";
-            $stmt = $con->prepare($sql);
-            $stmt->execute([$_SESSION['id_user'], $titre, $description]);
-            
+        $con = connection();
+        
+        // Insertion en base de données
+        if (upload_photo($con, $_SESSION['id_user'], $titre, $description)) {
             header("Location: accueil.php?success=Photo déposée avec succès");
             exit;
-        } catch (PDOException $e) {
+        } else {
             // En cas d'erreur, supprimer le fichier uploadé
             if (file_exists($destination)) {
                 unlink($destination);
