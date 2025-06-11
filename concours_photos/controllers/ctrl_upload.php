@@ -4,35 +4,34 @@ ini_set('display_errors', 1);
 #require("modeles/vote_crud.php");
 require_once("models/connection.php");
 require_once("models/upload_crud.php");
+require_once("models/session_manager.php");
 
+// Vérifier si l'utilisateur est connecté
+require_login();
 
-
-$con = connection(); // Récupère l'objet PDO depuis connection()
-
-$sql = "INSERT INTO photo (id_user, nom_photo, description, date_depot) VALUES (?, ?, ?, NOW())";
-$stmt = $con->prepare($sql);
-$stmt->execute([$user_id, $titre, $description]);
-
+$con = connection();
+$user = get_current_user();
 
 // Vérifie que tous les champs sont là
 if (
     isset($_FILES['photo']) &&
-    isset($_POST['id']) &&
     isset($_POST['titre']) &&
     isset($_POST['description'])
 ) {
-    $user_id = htmlspecialchars($_POST['id']);
+    $user_id = $user['id'];
     $titre = htmlspecialchars($_POST['titre']);
     $description = htmlspecialchars($_POST['description']);
 
     // Vérifie que les longueurs sont respectées
     if (strlen($titre) > 100 || strlen($description) > 300) {
-        die("Titre ou description trop longue.");
+        header("Location: index.php?error=Titre ou description trop longue");
+        exit;
     }
 
     // Vérifie si l'utilisateur a déjà uploadé une photo
     if (has_user_uploaded($con, $user_id)) {
-        die("Vous avez déjà uploadé une photo.");
+        header("Location: index.php?error=Vous avez déjà uploadé une photo");
+        exit;
     }
 
     // Récupération fichier
@@ -46,28 +45,31 @@ if (
         $destination = "image_vote/" . $file_name;
 
         if (move_uploaded_file($tmp_name, $destination)) {
-            // Insertion en BDD
+            // Insertion en BDD via le CRUD
             if (upload_photo($con, $user_id, $titre, $description)) {
-                echo "Photo envoyée et enregistrée avec succès !";
+                header("Location: index.php?success=Photo envoyée et enregistrée avec succès");
+                exit;
             } else {
-                echo "Erreur lors de l'insertion en BDD.";
+                header("Location: index.php?error=Erreur lors de l'insertion en BDD");
+                exit;
             }
         } else {
-            echo "Erreur lors de l'enregistrement du fichier.";
+            header("Location: index.php?error=Erreur lors de l'enregistrement du fichier");
+            exit;
         }
     } else {
-        echo "Extension de fichier non autorisée.";
+        header("Location: index.php?error=Extension de fichier non autorisée");
+        exit;
     }
 } else {
-    echo "Formulaire incomplet.";
+    header("Location: index.php?error=Formulaire incomplet");
+    exit;
 }
 
 function upload_photo() {
     // Vérification de la connexion
-    if (!isset($_SESSION['id_user'])) {
-        header("Location: index.php?error=Vous devez être connecté pour déposer une photo");
-        exit;
-    }
+    require_login();
+    $user = get_current_user();
 
     // Vérification des données du formulaire
     if (!isset($_FILES['photo']) || !isset($_POST['titre']) || !isset($_POST['description'])) {
@@ -101,7 +103,7 @@ function upload_photo() {
 
     // Génération du nom de fichier unique
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $file_name = $_SESSION['id_user'] . "_" . time() . "." . $extension;
+    $file_name = $user['id'] . "_" . time() . "." . $extension;
     $destination = "uploads/photos/" . $file_name;
 
     // Création du dossier d'upload s'il n'existe pas
@@ -113,8 +115,8 @@ function upload_photo() {
     if (move_uploaded_file($file['tmp_name'], $destination)) {
         $con = connection();
         
-        // Insertion en base de données
-        if (upload_photo($con, $_SESSION['id_user'], $titre, $description)) {
+        // Insertion en base de données via le CRUD
+        if (upload_photo($con, $user['id'], $titre, $description)) {
             header("Location: accueil.php?success=Photo déposée avec succès");
             exit;
         } else {

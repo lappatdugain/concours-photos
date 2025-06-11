@@ -1,5 +1,4 @@
 <?php
-require_once("models/session_manager.php");
     //The front root controller
     
     //SEULEMENT en phase de développement !

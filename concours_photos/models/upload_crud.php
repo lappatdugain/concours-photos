@@ -4,7 +4,7 @@
 
 function upload_photo($c, $id_user, $nom_photo, $description) {
     try {
-        $req = "INSERT INTO photo (id_user, nom_photo, description, date_depot) VALUES (:id_user, :nom_photo, :description, NOW())";
+        $req = "INSERT INTO photo (id_user, nom_photo, description, date_depot) VALUES (:id_user, :nom_photo, :description, date())";
         $prep = $c->prepare($req);
         $prep->bindValue(':id_user', $id_user);
         $prep->bindValue(':nom_photo', $nom_photo);
