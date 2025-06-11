@@ -49,9 +49,9 @@ function is_logged_in() {
     return isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true;
 }
 
-// function get_current_user() {
-//     return $_SESSION['user_data'] ?? null;
-// }
+function get_current_user() {
+    return $_SESSION['user_data'] ?? null;
+}
 
 function require_login() {
     if (!is_logged_in()) {
