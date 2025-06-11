@@ -1,7 +1,5 @@
 <?php require('header.php'); ?>
 
-<link rel="stylesheet" href="../css/global.css">
-
 <div class="center-box">
     <h2>Page d'accueil</h2>
     <p><em>En cours de développement...</em></p>
