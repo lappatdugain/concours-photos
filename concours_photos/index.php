@@ -36,6 +36,10 @@ require_once("models/session_manager.php");
                 require('views/view_upload.php');
             }
             break;
+        
+        case 'contact':
+            require('views/contact_view.php');
+            break;
                        
         default:
             require('views/404_view.php');
