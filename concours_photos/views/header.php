@@ -20,10 +20,10 @@
 </header>
 <nav>
     <ul class="menu">
-      <li><a href="#">Accueil</a></li>
-      <li><a href="#">Dépôt</a></li>
-      <li><a href="#">Votes</a></li>
-      <li><a href="#">Contact</a></li>
+        <li><a href="index.php?route=accueil">Accueil</a></li>
+        <li><a href="index.php?route=upload">Dépôt</a></li>
+        <li><a href="index.php?route=vote">Votes</a></li>
+        <li><a href="index.php?route=contact">Contact</a></li>
     </ul>
   </nav>
     
