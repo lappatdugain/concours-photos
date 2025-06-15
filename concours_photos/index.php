@@ -40,7 +40,11 @@ require_once("models/session_manager.php");
         case 'contact':
             require('views/contact_view.php');
             break;
-                       
+
+        case 'accueil':
+            require('views/accueil.php');
+            break;
+                   
         default:
             require('views/404_view.php');
             break;
